@@ -1,6 +1,6 @@
 /* 	University Database DDL	*/
 
---jeremiah Pha
+--jeremiah Pha and Roshane Bent
 	CREATE TABLE classroom (
 		building	varchar(15),
 		room_number	varchar(7),
