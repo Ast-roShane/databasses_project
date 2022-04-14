@@ -2,28 +2,44 @@
 
 --jeremiah Pha and Roshane Bent
 -- hi hi hi
-	CREATE TABLE classroom (
-		building	varchar(15),
-		room_number	varchar(7),
-		capacity	numeric(4,0),
-		CONSTRAINT classroom_pkey PRIMARY KEY (building, room_number)
+	CREATE TABLE IF NOT EXISTS students (
+		student_id	INTEGER,
+		first_name	VARCHAR(20),
+		last_name		VARCHAR(20),
+		email 			VARCHAR(25),
+		contact_number INTEGER,
+
+		CONSTRAINT students_pkey PRIMARY KEY (student_id)
 	);
 
-	CREATE TABLE students (
-		ID			varchar(5),
-		name		varchar(20) NOT NULL,
-		dept_name	varchar(20),
-		tot_cred	numeric(3,0) CHECK (tot_cred >= 0),
-		CONSTRAINT student_pkey PRIMARY KEY (ID),
-		CONSTRAINT student_fkey FOREIGN KEY (dept_name) REFERENCES department (dept_name)
-			ON DELETE SET NULL
+	CREATE TABLE IF NOT EXISTS employees (
+		employees_id	INTEGER,
+		first_name		varchar(20),
+		last_name			varchar(20),
+		email					VARCHAR(25),
+		contact_number INTEGER,
+		hourly_rate		INTEGER
+
+		CONSTRAINT employees_pkey PRIMARY KEY (employees_id)
+
+
 	);
 
-	CREATE TABLE departments (
-		dept_name	varchar(20),
-		building	varchar(15),
-		budget		numeric(12,2) CHECK (budget > 0.00),
-		CONSTRAINT department_pkey PRIMARY KEY (dept_name)
+	CREATE TABLE IF NOT EXISTS driving_details (
+		van_id									INTEGER,
+		employees_id						INTEGER,
+		driver_license_number		INTEGER,
+		driver_name							VARCHAR(20),
+		email										VARCHAR(25),
+		time_left								INTEGER,
+		time_arrived						INTEGER,
+		gas_amount							INTEGER,
+		datee										DATE,
+
+		CONSTRAINT driving_details_pkey PRIMARY KEY (van_id),
+		CONSTRAINT driving_details_fkey	FOREIGN KEY (employees_id) REFERENCES employees (employees_id)
+			ON UPDATE CASCADE
+			ON DELETE CASCADE
 	);
 
 	CREATE TABLE driving_details(
