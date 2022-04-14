@@ -1,6 +1,6 @@
 /* 	University Database DDL	*/
-
-	CREATE TABLE customers (
+--jeremiah Pha
+	CREATE TABLE classroom (
 		building	varchar(15),
 		room_number	varchar(7),
 		capacity	numeric(4,0),
