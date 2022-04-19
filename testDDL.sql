@@ -30,7 +30,7 @@
 		building				VARCHAR,
 
 		CONSTRAINT departments_pkey PRIMARY KEY (department_id)
-		
+
 	);
 
 	CREATE TABLE IF NOT EXISTS driving_details (
