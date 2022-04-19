@@ -99,7 +99,7 @@
 
 		);
 
-	CREATE TABLE incoming_shipments (
+	CREATE TABLE IF NOT EXISTS incoming_shipments (
 		tracking_number INTEGER,
 		student_id INTEGER,
 		faculty_id INTEGER,
