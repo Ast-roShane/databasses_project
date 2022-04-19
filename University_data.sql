@@ -8,28 +8,47 @@ DELETE FROM departments;
 DELETE FROM outgoing_shipments;
 -------------------------------------------------------------------------------
 ---------------------------------departments------------------------------------
-INSERT INTO departments VALUES ('Biology', 'Watson', '90000');
-INSERT INTO departments VALUES ('Comp. Sci.', 'Taylor', '100000');
-INSERT INTO departments VALUES ('Elec. Eng.', 'Taylor', '85000');
-INSERT INTO departments VALUES ('Finance', 'Painter', '120000');
-INSERT INTO departments VALUES ('History', 'Painter', '50000');
-INSERT INTO departments VALUES ('Music', 'Packard', '80000');
-INSERT INTO departments VALUES ('Physics', 'Watson', '70000');
+INSERT INTO departments VALUES ('Biology', 'Andrews', '900000');
+INSERT INTO departments VALUES ('Comp. Sci.', 'Mccinnis', '100000');
+INSERT INTO departments VALUES ('Elec. Eng.', 'Andrews', '850000');
+INSERT INTO departments VALUES ('Finance', 'ELC', '120000');
+INSERT INTO departments VALUES ('Marketing', 'ELC', '125000');
+INSERT INTO departments VALUES ('History', 'Mccinnis', '500000');
+INSERT INTO departments VALUES ('Music', 'Workman', '800000');
+INSERT INTO departments VALUES ('Physics', 'Mccinnis', '700000');
+INSERT INTO departments VALUES ('Chemistry', 'Andrews', '950000');
 ------------------------------------------------------------------------
 ---------------------------------faculty--------------------------------
+--------------------------------------Comp. Sci.--------------------------------
+INSERT INTO faculty VALUES ('10101', '100000', 'Walter', 'Huddell','whuddell@eastern.edu','610-225-5530');
+INSERT INTO faculty VALUES ('10102', '100000', 'Gregory', 'Longo','glongo@eastern.edu','610-225-5531');
+INSERT INTO faculty VALUES ('10103', '100000', 'Nicola', 'McLallen','nmcLallen','610-225-5532');
+INSERT INTO faculty VALUES ('10104', '100000', 'Micheal', 'Morabito','mmorabito','610-225-5533');
+INSERT INTO faculty VALUES ('10105', '100000', 'Brandi', 'Henry','bhenry','610-225-5534');
+---------------------------------------------Biology-----------------------------------------------
+INSERT INTO faculty VALUES ('65000', '900000', 'Maria', 'Fichera','mfichera@eastern.edu','610-341-1460');
+INSERT INTO faculty VALUES ('65001', '900000', 'Wayne', 'Lutz','wlutz@eastern.edu','610-341-1461');
+INSERT INTO faculty VALUES ('65002', '900000', 'David', 'Unander','dunander@eastern.edu','610-341-1462');
+-------------------------------------------------Elec. Eng----------------------------------------------
+INSERT INTO faculty VALUES ('85000', '850000', 'Christopher', 'Bittenbender','cbittenbender@eastern.edu','610-342-1460');
+INSERT INTO faculty VALUES ('85001', '850000', 'William', 'Storm','wstorm@eastern.edu','610-342-1461');
+INSERT INTO faculty VALUES ('85002', '850000', 'Lucas', 'Stromberg','lstromberg@eastern.edu','610-342-1462');
+INSERT INTO faculty VALUES ('85003', '850000', 'Katrina', 'Hayes','khayes@eastern.edu','610-342-1463');
+--------------------------------------Finance----------------------------------------------------------------
+INSERT INTO faculty VALUES ('76000', '120000', 'Lorie', 'Thomas','lthomas@eastern.edu','610-342-1470');
+INSERT INTO faculty VALUES ('76001', '120000', 'Mary', 'Jones','mjones@eastern.edu','610-342-1471');
+---------------------------------------Marketing--------------------------------------------------------
+INSERT INTO faculty VALUES ('56000', '125000', 'Kelly', 'Goddard','kgoddard@eastern.edu','610-347-1465');
+INSERT INTO faculty VALUES ('56001', '125000', 'Micheal', 'Thomas','mthomas@eastern.edu','610-347-1466');
+INSERT INTO faculty VALUES ('56002', '125000', 'Ally', 'Rosario','arosario@eastern.edu','610-347-1467');
+------------------------------------------------History--------------------------------------
+INSERT INTO faculty VALUES ('46000', '500000', 'Micheal', 'Lee','mlee@eastern.edu','610-357-1468');
+INSERT INTO faculty VALUES ('46001', '500000', 'Johnathan', 'Reimer','jreimer@eastern.edu','610-357-1469');
+INSERT INTO faculty VALUES ('46002', '500000', 'Micheal', 'Dondzilla','mdondzilla@eastern.edu','610-357-1470');
 
-INSERT INTO faculty VALUES ('10101', 'Srinivasan', 'Comp. Sci.', '65000');
-INSERT INTO faculty VALUES ('12121', 'Wu', 'Finance', '90000');
-INSERT INTO faculty VALUES ('15151', 'Mozart', 'Music', '40000');
-INSERT INTO faculty VALUES ('22222', 'Einstein', 'Physics', '95000');
-INSERT INTO faculty VALUES ('32343', 'El Said', 'History', '60000');
-INSERT INTO faculty VALUES ('33456', 'Gold', 'Physics', '87000');
-INSERT INTO faculty VALUES ('45565', 'Katz', 'Comp. Sci.', '75000');
-INSERT INTO faculty VALUES ('58583', 'Califieri', 'History', '62000');
-INSERT INTO faculty VALUES ('76543', 'Singh', 'Finance', '80000');
-INSERT INTO faculty VALUES ('76766', 'Crick', 'Biology', '72000');
-INSERT INTO faculty VALUES ('83821', 'Brandt', 'Comp. Sci.', '92000');
-INSERT INTO faculty VALUES ('98345', 'Kim', 'Elec. Eng.', '80000');
+
+
+
 -------------------------------------------------------------------------------
 --------------------------------students------------------------------------------------
 INSERT INTO students VALUES ('00128', 'Zhang', 'Comp. Sci.', '102');
