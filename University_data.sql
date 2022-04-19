@@ -60,7 +60,7 @@ INSERT INTO faculty VALUES ('36650', '700000', 'Joseph', 'Giammarco','jgiammarco
 -------------------------------------------Chemistry--------------------------------------------------------------
 INSERT INTO faculty VALUES ('36004', '950000', 'Jeanne', 'Bundens','jbundens@eastern.edu','610-437-1441');
 INSERT INTO faculty VALUES ('36005', '950000', 'Joseph', 'Karpinski','jkarpinski@eastern.edu','610-437-1442');
-NSERT INTO faculty VALUES ('36058', '950000', 'Jeffrey', 'Lawton','jlawton@eastern.edu','610-437-1446');
+INSERT INTO faculty VALUES ('36058', '950000', 'Jeffrey', 'Lawton','jlawton@eastern.edu','610-437-1446');
 
 
 
