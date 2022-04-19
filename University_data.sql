@@ -55,7 +55,13 @@ INSERT INTO faculty VALUES ('46002', '500000', 'Micheal', 'Dondzilla','mdondzill
 -----------------------------------------------Music-------------------------------------------------
 INSERT INTO faculty VALUES ('36000', '800000', 'Steven', 'Ford','sford@eastern.edu','610-457-1468');
 INSERT INTO faculty VALUES ('36001', '800000', 'Emily', 'Patsin','epatsin@eastern.edu','610-457-1469');
------------------------------------------
+-----------------------------------------Physics------------------------------------------------------------
+INSERT INTO faculty VALUES ('36650', '700000', 'Joseph', 'Giammarco','jgiammarco@eastern.edu','610-457-1440');
+-------------------------------------------Chemistry--------------------------------------------------------------
+INSERT INTO faculty VALUES ('36004', '950000', 'Jeanne', 'Bundens','jbundens@eastern.edu','610-437-1441');
+INSERT INTO faculty VALUES ('36005', '950000', 'Joseph', 'Karpinski','jkarpinski@eastern.edu','610-437-1442');
+NSERT INTO faculty VALUES ('36058', '950000', 'Jeffrey', 'Lawton','jlawton@eastern.edu','610-437-1446');
+
 
 
 
