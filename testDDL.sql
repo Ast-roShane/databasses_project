@@ -21,6 +21,7 @@
 		hourly_rate			INTEGER
 
 		CONSTRAINT employees_pkey PRIMARY KEY (employees_id)
+
 	);
 
 	CREATE TABLE IF NOT EXISTS departments (
@@ -29,6 +30,7 @@
 		building				VARCHAR,
 
 		CONSTRAINT departments_pkey PRIMARY KEY (department_id)
+		
 	);
 
 	CREATE TABLE IF NOT EXISTS driving_details (
@@ -63,7 +65,7 @@
 	);
 
 
-	CREATE TABLE customers (
+	CREATE TABLE IF NOT EXISTS customers (
 		cust_id			INTEGER,
 		student_id	INTEGER,
 		faculty_id	INTEGER,
