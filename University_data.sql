@@ -6,8 +6,11 @@ DELETE FROM faculty;
 DELETE FROM customers;
 DELETE FROM departments;
 DELETE FROM outgoing_shipments;
+
 -------------------------------------------------------------------------------
 ---------------------------------departments------------------------------------
+--------------------------------------------------------------------------------
+
 INSERT INTO departments VALUES ('Biology', 'Andrews', '900000');
 INSERT INTO departments VALUES ('Comp. Sci.', 'Mccinnis', '100000');
 INSERT INTO departments VALUES ('Elec. Eng.', 'Andrews', '850000');
@@ -17,8 +20,12 @@ INSERT INTO departments VALUES ('History', 'Mccinnis', '500000');
 INSERT INTO departments VALUES ('Music', 'Workman', '800000');
 INSERT INTO departments VALUES ('Physics', 'Mccinnis', '700000');
 INSERT INTO departments VALUES ('Chemistry', 'Andrews', '950000');
+
 ------------------------------------------------------------------------
 ---------------------------------faculty--------------------------------
+---------------------------------------------------------------------------
+
+
 --------------------------------------Comp. Sci.--------------------------------
 INSERT INTO faculty VALUES ('10101', '100000', 'Walter', 'Huddell','whuddell@eastern.edu','610-225-5530');
 INSERT INTO faculty VALUES ('10102', '100000', 'Gregory', 'Longo','glongo@eastern.edu','610-225-5531');
@@ -45,7 +52,10 @@ INSERT INTO faculty VALUES ('56002', '125000', 'Ally', 'Rosario','arosario@easte
 INSERT INTO faculty VALUES ('46000', '500000', 'Micheal', 'Lee','mlee@eastern.edu','610-357-1468');
 INSERT INTO faculty VALUES ('46001', '500000', 'Johnathan', 'Reimer','jreimer@eastern.edu','610-357-1469');
 INSERT INTO faculty VALUES ('46002', '500000', 'Micheal', 'Dondzilla','mdondzilla@eastern.edu','610-357-1470');
-
+-----------------------------------------------Music-------------------------------------------------
+INSERT INTO faculty VALUES ('36000', '800000', 'Steven', 'Ford','sford@eastern.edu','610-457-1468');
+INSERT INTO faculty VALUES ('36001', '800000', 'Emily', 'Patsin','epatsin@eastern.edu','610-457-1469');
+-----------------------------------------
 
 
 
