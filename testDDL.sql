@@ -13,16 +13,22 @@
 	);
 
 	CREATE TABLE IF NOT EXISTS employees (
-		employees_id	INTEGER,
-		first_name		varchar(20),
-		last_name			varchar(20),
-		email					VARCHAR(25),
-		contact_number INTEGER,
-		hourly_rate		INTEGER
+		employees_id		INTEGER,
+		first_name			varchar(20),
+		last_name				varchar(20),
+		email						VARCHAR(25),
+		contact_number  INTEGER,
+		hourly_rate			INTEGER
 
 		CONSTRAINT employees_pkey PRIMARY KEY (employees_id)
+	);
 
+	CREATE TABLE IF NOT EXISTS departments (
+		department_id		INTEGER,
+		faculty_count		INTEGER,
+		building				VARCHAR,
 
+		CONSTRAINT departments_pkey PRIMARY KEY (department_id)
 	);
 
 	CREATE TABLE IF NOT EXISTS driving_details (
@@ -42,62 +48,71 @@
 			ON DELETE CASCADE
 	);
 
-	CREATE TABLE driving_details(
-		time_slot_id	varchar(4),
-		day				varchar(1),
-		start_hr		numeric(2) CHECK (start_hr >= 0 and start_hr < 24),
-		start_min		numeric(2) CHECK (start_min >= 0 and start_min < 60),
-		end_hr			numeric(2) CHECK (end_hr >= 0 and end_hr < 24),
-		end_min			numeric(2) CHECK (end_min >= 0 and end_min < 60),
-		CONSTRAINT time_slot_pkey PRIMARY KEY (time_slot_id, day, start_hr, start_min)
-	);
+	CREATE TABLE IF NOT EXISTS faculty (
+		faculty_id			INTEGER,
+		department_id		INTEGER,
+		first_name			VARCHAR(20),
+		last_name				VARCHAR(20),
+		email						VARCHAR(25),
+		contact_number	INTEGER,
 
-
-	CREATE TABLE faculty (
-		ID			varchar(5),
-		name		varchar(20) NOT NULL,
-		dept_name	varchar(20),
-		salary		numeric(8,2) CHECK (salary > 29000),
-		CONSTRAINT instructor_pkey PRIMARY KEY (ID),
-		CONSTRAINT instructor_fkey FOREIGN KEY (dept_name) REFERENCES department (dept_name)
-			ON DELETE SET NULL
-	);
-
-	CREATE TABLE outgoing_shipments (
-		course_id		varchar(8),
-		sec_id			varchar(8),
-		semester		varchar(6) CHECK (semester in ('Fall', 'Winter', 'Spring', 'Summer')),
-		year			numeric(4,0) CHECK (year > 1701 and year < 2100),
-		building		varchar(15),
-		room_number		varchar(7),
-		time_slot_id	varchar(4),
-		CONSTRAINT section_pkey PRIMARY KEY (course_id, sec_id, semester, year),
-		CONSTRAINT section_fkey_1 FOREIGN KEY (course_id) REFERENCES course (course_id)
-			ON DELETE CASCADE,
-		CONSTRAINT section_fkey_2 FOREIGN KEY (building, room_number) REFERENCES classroom (building, room_number)
-			ON DELETE SET NULL
-		);
-
-	CREATE TABLE incoming_shipments (
-		ID			varchar(5),
-		course_id	varchar(8),
-		sec_id		varchar(8),
-		semester	varchar(6),
-		year		numeric(4,0),
-		CONSTRAINT teaches_pkey PRIMARY KEY (ID, course_id, sec_id, semester, year),
-		CONSTRAINT teaches_fkey_1 FOREIGN KEY (course_id, sec_id, semester, year) REFERENCES section (course_id, sec_id, semester, year)
-			ON DELETE CASCADE,
-		CONSTRAINT teaches_fkey_2 FOREIGN KEY (ID) REFERENCES instructor (ID)
+		CONSTRAINT faculty_pkey PRIMARY KEY (faculty_id),
+		CONSTRAINT faculty_fkey FOREIGN KEY (department_id) REFERENCES departments (department_id)
+			ON UPDATE CASCADE
 			ON DELETE CASCADE
 	);
 
 
-	CREATE TABLE employees (
-		s_ID	varchar(5),
-		i_ID	varchar(5),
-		CONSTRAINT advisor_pkey PRIMARY KEY (s_ID),
-		CONSTRAINT advisor_fkey_1 FOREIGN KEY (i_ID) REFERENCES instructor (ID)
-			ON DELETE SET NULL,
-		CONSTRAINT advisor_fkey_2 FOREIGN KEY (s_ID) REFERENCES student (ID)
+	CREATE TABLE customers (
+		cust_id			INTEGER,
+		student_id	INTEGER,
+		faculty_id	INTEGER,
+		cust_name		VARCHAR(20),
+		email				VARCHAR(25),
+		cust_contact_numbers INTEGER,
+
+		CONSTRAINT customers_pkey PRIMARY KEY (cust_id),
+		CONSTRAINT customers_fkey FOREIGN KEY (student_id) REFERENCES students (student_id)
+				ON UPDATE CASCADE
+				ON DELETE CASCADE
+	);
+
+	CREATE TABLE IF NOT EXISTS outgoing_shipments (
+		tracking_numbers INTEGER,
+		cust_id INTEGER,
+		employees_id INTEGER,
+		ship_date DATE,
+		ship_time INTEGER,
+		delivery_date DATE,
+		delivery_time INTEGER,
+		paid_date DATE,
+		origin_address VARCHAR (30),
+		destination_address VARCHAR(30),
+		mail_type VARCHAR(20),
+		notes VARCHAR(30),
+
+		CONSTRAINT outgoing_shipments_pkey PRIMARY KEY (tracking_numbers),
+		CONSTRAINT outgoing_shipments_fkey FOREIGN KEY (cust_id) REFERENCES customers (cust_id),
+		CONSTRAINT outgoing_shipments_fkey FOREIGN KEY (employees_id) REFERENCES employees (employees_id)
+			ON UPDATE CASCADE
+			ON DELETE CASCADE
+
+		);
+
+	CREATE TABLE incoming_shipments (
+		tracking_number INTEGER,
+		student_id INTEGER,
+		faculty_id INTEGER,
+		employees_id INTEGER,
+		date_arrived DATE,
+		time_arrived INTEGER,
+		recep_name VARCHAR(20)
+		comments VARCHAR(30),
+
+		CONSTRAINT incoming_shipments_pkey PRIMARY KEY (tracking_number),
+		CONSTRAINT incoming_shipments_fkey FOREIGN KEY (student_id) REFERENCES students (student_id),
+		CONSTRAINT incoming_shipments_fkey FOREIGN KEY (faculty_id) REFERENCES faculty (faculty_id),
+		CONSTRAINT incoming_shipments_fkey FOREIGN KEY (employees_id) REFERENCES employees (employees_id)
+			ON UPDATE CASCADE
 			ON DELETE CASCADE
 	);
