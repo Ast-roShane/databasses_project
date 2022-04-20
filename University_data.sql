@@ -67,27 +67,49 @@ INSERT INTO faculty VALUES ('36058', '950000', 'Jeffrey', 'Lawton','jlawton@east
 
 -------------------------------------------------------------------------------
 --------------------------------students------------------------------------------------
-INSERT INTO students VALUES ('00128', 'Zhang', 'Comp. Sci.', '102');
-INSERT INTO students VALUES ('12345', 'Shankar', 'Comp. Sci.', '32');
-INSERT INTO students VALUES ('19991', 'Brandt', 'History', '80');
-INSERT INTO students VALUES ('23121', 'Chavez', 'Finance', '110');
-INSERT INTO students VALUES ('44553', 'Peltier', 'Physics', '56');
-INSERT INTO students VALUES ('45678', 'Levy', 'Physics', '46');
-INSERT INTO students VALUES ('54321', 'Williams', 'Comp. Sci.', '54');
-INSERT INTO students VALUES ('55739', 'Sanchez', 'Music', '38');
-INSERT INTO students VALUES ('70557', 'Snow', 'Physics', '0');
-INSERT INTO students VALUES ('76543', 'Brown', 'Comp. Sci.', '58');
-INSERT INTO students VALUES ('76653', 'Aoi', 'Elec. Eng.', '60');
-INSERT INTO students VALUES ('98765', 'Bourikas', 'Elec. Eng.', '98');
-INSERT INTO students VALUES ('98988', 'Tanaka', 'Biology', '120');
+INSERT INTO students VALUES ('000128',,'Zhang', 'Comp. Sci.', '102');
+INSERT INTO students VALUES ('012345', 'Shankar', 'Comp. Sci.', '32');
+INSERT INTO students VALUES ('019991', 'Brandt', 'History', '80');
+INSERT INTO students VALUES ('023121', 'Chavez', 'Finance', '110');
+INSERT INTO students VALUES ('044552', 'Peltier', 'Physics', '56');
+INSERT INTO students VALUES ('045678', 'Levy', 'Physics', '46');
+INSERT INTO students VALUES ('054321', 'Williams', 'Comp. Sci.', '54');
+INSERT INTO students VALUES ('055739', 'Sanchez', 'Music', '38');
+INSERT INTO students VALUES ('070557', 'Snow', 'Physics', '0');
+INSERT INTO students VALUES ('076543', 'Brown', 'Comp. Sci.', '58');
+INSERT INTO students VALUES ('076653', 'Aoi', 'Elec. Eng.', '60');
+INSERT INTO students VALUES ('098765', 'Bourikas', 'Elec. Eng.', '98');
+INSERT INTO students VALUES ('098988', 'Tanaka', 'Biology', '120');
 --------------------------------------------------------------------------
 ---------------------------------employees------------------------------------------
-INSERT INTO employees VALUES ('00128', '45565');
-INSERT INTO employees VALUES ('12345', '10101');
-INSERT INTO employees VALUES ('23121', '76543');
-INSERT INTO employees VALUES ('44553', '22222');
-INSERT INTO employees VALUES ('45678', '22222');
-INSERT INTO employees VALUES ('76543', '45565');
-INSERT INTO employees VALUES ('76653', '98345');
-INSERT INTO employees VALUES ('98765', '98345');
-INSERT INTO employees VALUES ('98988', '76766');
+INSERT INTO employees VALUES ('00128');
+INSERT INTO employees VALUES ('12345');
+INSERT INTO employees VALUES ('23121');
+INSERT INTO employees VALUES ('44553');
+INSERT INTO employees VALUES ('45678');
+INSERT INTO employees VALUES ('76543');
+INSERT INTO employees VALUES ('76653');
+INSERT INTO employees VALUES ('98765');
+INSERT INTO employees VALUES ('98988');
+
+
+---------------------------------------------------------------------------------------
+--------------------------------------driving_details---------------------------------------
+INSERT INTO driving_details('45565','00128','47148236','2022-04-22 13:23:44','2022-04-22 15:45:21','0.50');
+INSERT INTO driving_details('45565','00128','47148236','2022-04-22 16:00:00','2022-04-22 16:45:30','0.35');
+INSERT INTO driving_details('10101','12345','37859172','2022-04-23 08:30:00','2022-04-23 10:00:00','1.00');
+INSERT INTO driving_details('45565','00128','47148236','2022-04-23 13:30:44','2022-04-23 15:45:21','0.90');
+INSERT INTO driving_details('45565','00128','47148236','2022-04-23 16:00:00','2022-04-23 16:45:30','0.75');
+INSERT INTO driving_details('76543','23121','35028697','2022-04-24 13:23:44','2022-04-24 15:45:21','0.50');
+INSERT INTO driving_details('76543','23121','35028697','2022-04-24 16:00:00','2022-04-24 16:45:30','0.35');
+INSERT INTO driving_details('45565','00128','47148236','2022-04-25 08:30:00','2022-04-25 10:00:00','1.00');
+INSERT INTO driving_details('10101','12345','37859172','2022-04-25 13:30:44','2022-04-25 15:45:21','0.90');
+INSERT INTO driving_details('45565','00128','47148236','2022-04-25 16:00:00','2022-04-25 16:45:30','0.75');
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------incoming_shipments------------------------------------------------
+
+INSERT INTO incoming_shipments('272118442670','000128',NULL,'12345','2022-04-22 13:23:44','SHELF');
+INSERT INTO incoming_shipments('272118442870','000128',NULL,'12345','2022-04-22 13:23:44','SHELF');
+INSERT INTO incoming_shipments('272118442970','000128',NULL,'12345','2022-04-22 13:23:44','SHELF');
+INSERT INTO incoming_shipments('272177160739',NULL,'10101','12345','2022-04-22 13:25:00','SHELF');
+INSERT INTO incoming_shipments('272056557375',NULL,'10101','12345','2022-04-22 13:25:00','SHELF');

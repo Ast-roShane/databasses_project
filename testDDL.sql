@@ -37,12 +37,10 @@
 		van_id									INTEGER,
 		employees_id						INTEGER,
 		driver_license_number		INTEGER,
-		driver_name							VARCHAR(20),
-		email										VARCHAR(25),
-		time_left								INTEGER,
-		time_arrived						INTEGER,
-		gas_amount							INTEGER,
-		datee										DATE,
+		time_left								DATETIME,
+		time_arrived						DATETIME,
+		gas_amount							FLOAT,
+
 
 		CONSTRAINT driving_details_pkey PRIMARY KEY (van_id),
 		CONSTRAINT driving_details_fkey	FOREIGN KEY (employees_id) REFERENCES employees (employees_id)
@@ -83,10 +81,8 @@
 		tracking_numbers INTEGER,
 		cust_id INTEGER,
 		employees_id INTEGER,
-		ship_date DATE,
-		ship_time INTEGER,
-		delivery_date DATE,
-		delivery_time INTEGER,
+		ship_time DATETIME,
+		delivery_time DATETIME,
 		paid_date DATE,
 		origin_address VARCHAR (30),
 		destination_address VARCHAR(30),
@@ -106,9 +102,7 @@
 		student_id INTEGER,
 		faculty_id INTEGER,
 		employees_id INTEGER,
-		date_arrived DATE,
-		time_arrived INTEGER,
-		recep_name VARCHAR(20)
+		time_arrived DATETIME,
 		comments VARCHAR(30),
 
 		CONSTRAINT incoming_shipments_pkey PRIMARY KEY (tracking_number),
