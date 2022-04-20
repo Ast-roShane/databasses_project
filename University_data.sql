@@ -67,8 +67,8 @@ INSERT INTO faculty VALUES ('36058', '950000', 'Jeffrey', 'Lawton','jlawton@east
 
 -------------------------------------------------------------------------------
 --------------------------------students------------------------------------------------
-INSERT INTO students VALUES ('000128',,'Zhang', 'Comp. Sci.', '102');
-INSERT INTO students VALUES ('012345', 'Shankar', 'Comp. Sci.', '32');
+INSERT INTO students VALUES ('000128','Micheal','Zhang', 'micheal.zhang@eastern.edu', '202-918-2132');
+INSERT INTO students VALUES ('012345','Aroon', 'Shankar', 'aroon.shankar@eastern.edu', '582-529-5188');
 INSERT INTO students VALUES ('019991', 'Brandt', 'History', '80');
 INSERT INTO students VALUES ('023121', 'Chavez', 'Finance', '110');
 INSERT INTO students VALUES ('044552', 'Peltier', 'Physics', '56');
@@ -113,3 +113,23 @@ INSERT INTO incoming_shipments('272118442870','000128',NULL,'12345','2022-04-22 
 INSERT INTO incoming_shipments('272118442970','000128',NULL,'12345','2022-04-22 13:23:44','SHELF');
 INSERT INTO incoming_shipments('272177160739',NULL,'10101','12345','2022-04-22 13:25:00','SHELF');
 INSERT INTO incoming_shipments('272056557375',NULL,'10101','12345','2022-04-22 13:25:00','SHELF');
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------outgoing_shipments---------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------customers------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
