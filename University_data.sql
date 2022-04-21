@@ -69,9 +69,9 @@ INSERT INTO faculty VALUES ('36058', '950000', 'Jeffrey', 'Lawton','jlawton@east
 --------------------------------students------------------------------------------------
 INSERT INTO students VALUES ('000128','Micheal','Zhang', 'micheal.zhang@eastern.edu', '202-918-2132');
 INSERT INTO students VALUES ('012345','Aroon', 'Shankar', 'aroon.shankar@eastern.edu', '582-529-5188');
-INSERT INTO students VALUES ('019991', 'Brandt', 'History', '80');
-INSERT INTO students VALUES ('023121', 'Chavez', 'Finance', '110');
-INSERT INTO students VALUES ('044552', 'Peltier', 'Physics', '56');
+INSERT INTO students VALUES ('019991', 'Jules','Brandt', 'jules.brandt@eastern.edu', '419-326-0712');
+INSERT INTO students VALUES ('023121', 'Juan','Chavez', 'juan.chavez@eastern.edu', ' 231-881-4310');
+INSERT INTO students VALUES ('044552', 'Jah','Peltier', 'jah.peltier@eastern.edu', '215-547-9097');
 INSERT INTO students VALUES ('045678', 'Levy', 'Physics', '46');
 INSERT INTO students VALUES ('054321', 'Williams', 'Comp. Sci.', '54');
 INSERT INTO students VALUES ('055739', 'Sanchez', 'Music', '38');
