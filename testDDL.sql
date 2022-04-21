@@ -18,7 +18,7 @@
 		last_name				varchar(20),
 		email						VARCHAR(25),
 		contact_number  INTEGER,
-		hourly_rate			INTEGER
+		hourly_rate			INTEGER,
 
 		CONSTRAINT employees_pkey PRIMARY KEY (employees_id)
 
