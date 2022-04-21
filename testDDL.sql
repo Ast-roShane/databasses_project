@@ -27,7 +27,7 @@
 	CREATE TABLE IF NOT EXISTS departments (
 		department_id		INTEGER,
 		faculty_count		INTEGER,
-		building				VARCHAR,
+		building				VARCHAR(30),
 
 		CONSTRAINT departments_pkey PRIMARY KEY (department_id)
 
