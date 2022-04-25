@@ -72,20 +72,20 @@ INSERT INTO students VALUES ('012345','Aroon', 'Shankar', 'aroon.shankar@eastern
 INSERT INTO students VALUES ('019991', 'Jules','Brandt', 'jules.brandt@eastern.edu', '419-326-0712');
 INSERT INTO students VALUES ('023121', 'Juan','Chavez', 'juan.chavez@eastern.edu', ' 231-881-4310');
 INSERT INTO students VALUES ('044552', 'Jah','Peltier', 'jah.peltier@eastern.edu', '215-547-9097');
-INSERT INTO students VALUES ('045678', 'Levy', 'Physics', '46');
-INSERT INTO students VALUES ('054321', 'Williams', 'Comp. Sci.', '54');
-INSERT INTO students VALUES ('055739', 'Sanchez', 'Music', '38');
-INSERT INTO students VALUES ('070557', 'Snow', 'Physics', '0');
-INSERT INTO students VALUES ('076543', 'Brown', 'Comp. Sci.', '58');
-INSERT INTO students VALUES ('076653', 'Aoi', 'Elec. Eng.', '60');
-INSERT INTO students VALUES ('098765', 'Bourikas', 'Elec. Eng.', '98');
-INSERT INTO students VALUES ('098988', 'Tanaka', 'Biology', '120');
+INSERT INTO students VALUES ('045678', 'Chance','Levy', 'chance.levy@eastern.edu', ' 505-644-0457');
+INSERT INTO students VALUES ('054321', 'Walter','Williams', 'Comp. Sci.', '505-644-0227');
+INSERT INTO students VALUES ('055739', 'Jose','Sanchez', 'jose.sanchez@eastern.edu', ' 208-541-4879');
+INSERT INTO students VALUES ('070557', 'Jon','Snow', 'jon.snow@eastern.edu', ' 582-222-1973');
+INSERT INTO students VALUES ('076543','Micheal' ,'Brown', 'micheal.brown@eastern.edu', '202-897-4143');
+INSERT INTO students VALUES ('076653', 'Trevor','Aoi', 'trevor.aoi@eastern.edu', '512-415-4114');
+INSERT INTO students VALUES ('098765', 'Nick','Bourikas', 'nick.bourikas@eastern.edu', '505-712-7572');
+INSERT INTO students VALUES ('098988', 'Mike','Tanaka', 'mike.tanaka@eastern.edu', '582-583-3559');
 --------------------------------------------------------------------------
 ---------------------------------employees------------------------------------------
-INSERT INTO employees VALUES ('00128');
-INSERT INTO employees VALUES ('12345');
-INSERT INTO employees VALUES ('23121');
-INSERT INTO employees VALUES ('44553');
+INSERT INTO employees VALUES ('00128','Micheal','Zhang', 'micheal.zhang@eastern.edu', '202-918-2132','8.50');
+INSERT INTO employees VALUES ('12345','Chance','Levy', 'chance.levy@eastern.edu', ' 505-644-0457','8.50');
+INSERT INTO employees VALUES ('23121','Jon','Snow', 'jon.snow@eastern.edu', ' 582-222-1973','7.75');
+INSERT INTO employees VALUES ('44553', );
 INSERT INTO employees VALUES ('45678');
 INSERT INTO employees VALUES ('76543');
 INSERT INTO employees VALUES ('76653');
@@ -113,6 +113,12 @@ INSERT INTO incoming_shipments('272118442870','000128',NULL,'12345','2022-04-22 
 INSERT INTO incoming_shipments('272118442970','000128',NULL,'12345','2022-04-22 13:23:44','SHELF');
 INSERT INTO incoming_shipments('272177160739',NULL,'10101','12345','2022-04-22 13:25:00','SHELF');
 INSERT INTO incoming_shipments('272056557375',NULL,'10101','12345','2022-04-22 13:25:00','SHELF');
+
+INSERT INTO incoming_shipments('572658749645','019991',NULL,'23121','2022-04-23 12:23:44','SHELF');
+INSERT INTO incoming_shipments('546530021754','023121',NULL,'76543','2022-04-23 12:30:44','SHELF');
+INSERT INTO incoming_shipments('295511407701','000128',NULL,'12345','2022-04-23 13:23:44','SHELF');
+INSERT INTO incoming_shipments('938649320680',NULL,'85001','98765','2022-04-23 13:25:00','SHELF');
+INSERT INTO incoming_shipments('420190873696',NULL,'10101','45678','2022-04-23 13:30:00','SHELF');
 
 
 
