@@ -93,8 +93,8 @@
 		notes VARCHAR(30),
 
 		CONSTRAINT outgoing_shipments_pkey PRIMARY KEY (tracking_numbers),
-		CONSTRAINT outgoing_shipments_fkey FOREIGN KEY (cust_id) REFERENCES customers (cust_id),
-		CONSTRAINT outgoing_shipments_fkey FOREIGN KEY (employees_id) REFERENCES employees (employees_id)
+		CONSTRAINT outgoing_shipments_fkey1 FOREIGN KEY (cust_id) REFERENCES customers (cust_id),
+		CONSTRAINT outgoing_shipments_fkey2 FOREIGN KEY (employees_id) REFERENCES employees (employees_id)
 			ON UPDATE CASCADE
 			ON DELETE CASCADE
 
@@ -110,9 +110,9 @@
 		comments VARCHAR(30),
 
 		CONSTRAINT incoming_shipments_pkey PRIMARY KEY (tracking_number),
-		CONSTRAINT incoming_shipments_fkey FOREIGN KEY (student_id) REFERENCES students (student_id),
-		CONSTRAINT incoming_shipments_fkey FOREIGN KEY (faculty_id) REFERENCES faculty (faculty_id),
-		CONSTRAINT incoming_shipments_fkey FOREIGN KEY (employees_id) REFERENCES employees (employees_id)
+		CONSTRAINT incoming_shipments_fkey1 FOREIGN KEY (student_id) REFERENCES students (student_id),
+		CONSTRAINT incoming_shipments_fkey2 FOREIGN KEY (faculty_id) REFERENCES faculty (faculty_id),
+		CONSTRAINT incoming_shipments_fkey3 FOREIGN KEY (employees_id) REFERENCES employees (employees_id)
 			ON UPDATE CASCADE
 			ON DELETE CASCADE
 	);
