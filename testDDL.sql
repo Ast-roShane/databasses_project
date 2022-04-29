@@ -15,7 +15,7 @@ DROP TABLE incoming_shipments CASCADE;
 		student_id	INTEGER,
 		first_name	VARCHAR(20),
 		last_name		VARCHAR(20),
-		email 			VARCHAR(25),
+		email 			VARCHAR(50),
 		contact_number VARCHAR(25),
 
 		CONSTRAINT students_pkey PRIMARY KEY (student_id)
@@ -25,9 +25,9 @@ DROP TABLE incoming_shipments CASCADE;
 		employees_id		INTEGER,
 		first_name			varchar(20),
 		last_name				varchar(20),
-		email						VARCHAR(25),
-		contact_number  INTEGER,
-		hourly_rate			VARCHAR(25),
+		email						VARCHAR(50),
+		contact_number  VARCHAR(25),
+		hourly_rate			FLOAT,
 
 		CONSTRAINT employees_pkey PRIMARY KEY (employees_id)
 
@@ -46,9 +46,9 @@ DROP TABLE incoming_shipments CASCADE;
 		van_id									INTEGER,
 		employees_id						INTEGER,
 		driver_license_number		INTEGER,
-		time_left								DATE,
+		time_left								VARCHAR(50),
 		datee 									DATE,
-		time_arrived							DATE,
+		time_arrived							TIME,
 		gas_amount							VARCHAR(25),
 
 
@@ -63,7 +63,7 @@ DROP TABLE incoming_shipments CASCADE;
 		department_id		INTEGER,
 		first_name			VARCHAR(20),
 		last_name				VARCHAR(20),
-		email						VARCHAR(25),
+		email						VARCHAR(50),
 		contact_number	VARCHAR(25),
 
 		CONSTRAINT faculty_pkey PRIMARY KEY (faculty_id),
@@ -78,7 +78,7 @@ DROP TABLE incoming_shipments CASCADE;
 		student_id	INTEGER,
 		faculty_id	INTEGER,
 		cust_name		VARCHAR(20),
-		email				VARCHAR(25),
+		email				VARCHAR(50),
 		cust_contact_numbers VARCHAR(25),
 
 		CONSTRAINT customers_pkey PRIMARY KEY (cust_id),
@@ -92,12 +92,12 @@ DROP TABLE incoming_shipments CASCADE;
 		cust_id INTEGER,
 		employees_id INTEGER,
 		ship_date		DATE,
-		ship_time DATE,
+		ship_time TIME,
 		delivery_date   DATE,
-		delivery_time DATE,
+		delivery_time TIME,
 		paid_date DATE,
-		origin_address VARCHAR (30),
-		destination_address VARCHAR(30),
+		origin_address VARCHAR (100),
+		destination_address VARCHAR(100),
 		mail_type VARCHAR(20),
 		notes VARCHAR(30),
 
@@ -115,8 +115,8 @@ DROP TABLE incoming_shipments CASCADE;
 		faculty_id INTEGER,
 		employees_id INTEGER,
 		date_arrived DATE,
-		time_arrived DATE,
-		comments VARCHAR(30),
+		time_arrived TIME,
+		commentt VARCHAR(30),
 
 		CONSTRAINT incoming_shipments_pkey PRIMARY KEY (tracking_number),
 		CONSTRAINT incoming_shipments_fkey1 FOREIGN KEY (student_id) REFERENCES students (student_id),
