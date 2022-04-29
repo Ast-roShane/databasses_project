@@ -2,12 +2,21 @@
 
 --jeremiah Pha and Roshane Bent
 -- hi hi hi
+DROP TABLE students CASCADE;
+DROP TABLE employees CASCADE;
+DROP TABLE departments CASCADE;
+DROP TABLE driving_details CASCADE;
+DROP TABLE faculty CASCADE;
+DROP TABLE customers CASCADE;
+DROP TABLE outgoing_shipments CASCADE;
+DROP TABLE incoming_shipments CASCADE;
+
 	CREATE TABLE IF NOT EXISTS students (
 		student_id	INTEGER,
 		first_name	VARCHAR(20),
 		last_name		VARCHAR(20),
 		email 			VARCHAR(25),
-		contact_number INTEGER,
+		contact_number VARCHAR(25),
 
 		CONSTRAINT students_pkey PRIMARY KEY (student_id)
 	);
@@ -18,7 +27,7 @@
 		last_name				varchar(20),
 		email						VARCHAR(25),
 		contact_number  INTEGER,
-		hourly_rate			FLOAT,
+		hourly_rate			VARCHAR(25),
 
 		CONSTRAINT employees_pkey PRIMARY KEY (employees_id)
 
@@ -40,7 +49,7 @@
 		time_left								DATE,
 		datee 									DATE,
 		time_arrived							DATE,
-		gas_amount							FLOAT,
+		gas_amount							VARCHAR(25),
 
 
 		CONSTRAINT driving_details_pkey PRIMARY KEY (van_id),
@@ -55,7 +64,7 @@
 		first_name			VARCHAR(20),
 		last_name				VARCHAR(20),
 		email						VARCHAR(25),
-		contact_number	INTEGER,
+		contact_number	VARCHAR(25),
 
 		CONSTRAINT faculty_pkey PRIMARY KEY (faculty_id),
 		CONSTRAINT faculty_fkey FOREIGN KEY (department_id) REFERENCES departments (department_id)
@@ -70,7 +79,7 @@
 		faculty_id	INTEGER,
 		cust_name		VARCHAR(20),
 		email				VARCHAR(25),
-		cust_contact_numbers INTEGER,
+		cust_contact_numbers VARCHAR(25),
 
 		CONSTRAINT customers_pkey PRIMARY KEY (cust_id),
 		CONSTRAINT customers_fkey FOREIGN KEY (student_id) REFERENCES students (student_id)
