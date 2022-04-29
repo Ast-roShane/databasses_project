@@ -11,15 +11,15 @@ DELETE FROM outgoing_shipments;
 ---------------------------------departments------------------------------------
 --------------------------------------------------------------------------------
 
-INSERT INTO departments (department_id, building, faculty_count) VALUES ('Biology', 'Andrews', '900000');
-INSERT INTO departments (department_id, building, faculty_count) VALUES ('Comp. Sci.', 'Mccinnis', '100000');
-INSERT INTO departments (department_id, building, faculty_count) VALUES ('Elec. Eng.', 'Andrews', '850000');
-INSERT INTO departments (department_id, building, faculty_count) VALUES ('Finance', 'ELC', '120000');
-INSERT INTO departments (department_id, building, faculty_count) VALUES ('Marketing', 'ELC', '125000');
-INSERT INTO departments (department_id, building, faculty_count) VALUES ('History', 'Mccinnis', '500000');
-INSERT INTO departments (department_id, building, faculty_count) VALUES ('Music', 'Workman', '800000');
-INSERT INTO departments (department_id, building, faculty_count) VALUES ('Physics', 'Mccinnis', '700000');
-INSERT INTO departments (department_id, building, faculty_count) VALUES ('Chemistry', 'Andrews', '950000');
+INSERT INTO departments (department_id, faculty_count, building) VALUES ('900000', '12', 'Andrews' );
+INSERT INTO departments (department_id, faculty_count, building) VALUES ('100000', '11', 'Mccinnis');
+INSERT INTO departments (department_id, faculty_count, building) VALUES ('850000', '10', 'Andrews');
+INSERT INTO departments (department_id, faculty_count, building) VALUES ('120000', '5', 'ELC');
+INSERT INTO departments (department_id, faculty_count, building) VALUES ('125000', '7', 'ELC');
+INSERT INTO departments (department_id, faculty_count, building) VALUES ('500000', '10', 'Mccinnis');
+INSERT INTO departments (department_id, faculty_count, building) VALUES ('800000', '6', 'Workman');
+INSERT INTO departments (department_id, faculty_count, building) VALUES ('700000', '8', 'Mccinnis');
+INSERT INTO departments (department_id, faculty_count, building) VALUES ('950000', '12', 'Andrews');
 
 ------------------------------------------------------------------------
 ---------------------------------faculty--------------------------------
