@@ -37,9 +37,9 @@
 		van_id									INTEGER,
 		employees_id						INTEGER,
 		driver_license_number		INTEGER,
-		time_left								DATETIME,
+		time_left								DATE,
 		datee 									DATE,
-		time_arrived						DATETIME,
+		time_arrived							DATE,
 		gas_amount							FLOAT,
 
 
@@ -83,9 +83,9 @@
 		cust_id INTEGER,
 		employees_id INTEGER,
 		ship_date		DATE,
-		ship_time DATETIME,
+		ship_time DATE,
 		delivery_date   DATE,
-		delivery_time DATETIME,
+		delivery_time DATE,
 		paid_date DATE,
 		origin_address VARCHAR (30),
 		destination_address VARCHAR(30),
@@ -106,7 +106,7 @@
 		faculty_id INTEGER,
 		employees_id INTEGER,
 		date_arrived DATE,
-		time_arrived DATETIME,
+		time_arrived DATE,
 		comments VARCHAR(30),
 
 		CONSTRAINT incoming_shipments_pkey PRIMARY KEY (tracking_number),
