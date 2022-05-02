@@ -25,6 +25,7 @@ how many did he recieve each day and at what times did the packages arrive?*/
 	FROM incoming_shipments
 	WHERE incoming_shipments.student_id = '000128';
 
+  --THIS QUERY CHECKS HOW MANY PACKAGES MICHAEL HAD RECEIVED ON EACH DAY AND WHAT TIMES THE PACKAGES HAVE ARRIVED--
 	SELECT students.first_name, date_arrived, time_arrived, COUNT(incoming_shipments.student_id)
 	FROM incoming_shipments,students
 	WHERE incoming_shipments.student_id = '000128' AND students.student_id = '000128'
