@@ -14,3 +14,8 @@ FROM outgoing_shipments
 SELECT cust_id,cust_name
 FROM customers
 WHERE student_id and faculty_id is NULL
+
+--------------------query6---------------------
+SELECT *
+FROM faculty
+WHERE
