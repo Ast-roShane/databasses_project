@@ -109,8 +109,8 @@ INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_c
 INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (09576, NULL, 36058, 'Jeffrey Lawton','jlawton@eastern.edu','610-437-1446');
 
 --STUDENT CUSTOMERS--
-INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (65457, 019991, NULL, 'Jules','Brandt jules.brandt@eastern.edu', '419-326-0712');
-INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (87547, 023121, NULL, 'Juan','Chavez juan.chavez@eastern.edu', ' 231-881-4310');
+INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (65457, 019991, NULL, 'Jules Brandt', 'jules.brandt@eastern.edu', '419-326-0712');
+INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (87547, 023121, NULL, 'Juan Chavez', 'juan.chavez@eastern.edu', ' 231-881-4310');
 INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (12353, 044552, NULL, 'Jah Peltier', 'jah.peltier@eastern.edu', '215-547-9097');
 INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (35234, 045678, NULL, 'Chance Levy', 'chance.levy@eastern.edu', ' 505-644-0457');
 INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (76567, 054321, NULL, 'Walter Williams', 'walter.williams@eastern.edu', '505-644-0227');
@@ -119,6 +119,12 @@ INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_c
 INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (65498, 076543, NULL, 'Micheal Brown', 'micheal.brown@eastern.edu', '202-897-4143');
 INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (32543, 076653, NULL, 'Trevor Aoi', 'trevor.aoi@eastern.edu', '512-415-4114');
 INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (76543, 098765, NULL, 'Nick Bourikas', 'nick.bourikas@eastern.edu', '505-712-7572');
+----OUTSIDE SCHOOL CUSTOMERS-----------------
+INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (77230, NULL, NULL, 'Juley Brand','juley.brand@gmail.com', '419-326-0711');
+INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (77231, NULL, NULL, 'John lee','john.lee@gmail.com', '419-335-0711');
+INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (77232, NULL, NULL, 'Mike Rex','mike.rex@gmail.com', '419-329-0731');
+INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (77234, NULL, NULL, 'Ned Flanders','ned.flanders@gmail.com', '419-356-0711');
+INSERT INTO customers (cust_id, student_id, faculty_id, cust_name, email, cust_contact_numbers) VALUES (77235, NULL, NULL, 'Bart Simpson','bart.simpson@gmail.com', '419-376-0734');
 
 
 ---------------------------------------------------------------------------------------
@@ -180,6 +186,3 @@ INSERT INTO outgoing_shipments (tracking_numbers, cust_id, employees_id, ship_da
 INSERT INTO outgoing_shipments (tracking_numbers, cust_id, employees_id, ship_date, ship_time, delivery_date, delivery_time, paid_date, origin_address, destination_address, mail_type, notes) VALUES (0710781, 65498, 098988, '2022-04-03', '12:22:00', '2022-04-12', '15:30:00', '2022-04-03', '1300 Eagle Rd, Wayne PA 19087', '1050 Old Us 119 Hwy S Homer City, Pennsylvania(PA), 15748', 'FedEx', 'Package');
 INSERT INTO outgoing_shipments (tracking_numbers, cust_id, employees_id, ship_date, ship_time, delivery_date, delivery_time, paid_date, origin_address, destination_address, mail_type, notes) VALUES (2900790, 32543, 00128, '2022-05-03', '9:50:00', '2022-05-11', '14:30:00', '2022-05-03', '1300 Eagle Rd, Wayne PA 19087', '217 Winesap Ct Janesville, Wisconsin(WI), 53548', 'FedEx', 'SHELF');
 INSERT INTO outgoing_shipments (tracking_numbers, cust_id, employees_id, ship_date, ship_time, delivery_date, delivery_time, paid_date, origin_address, destination_address, mail_type, notes) VALUES (4480717, 76543, 00128, '2022-02-02', '10:02:00', '2022-03-01', '14:00:00', '2022-02-02', '1300 Eagle Rd, Wayne PA 19087', '101 Tipperary Dr Phoenixville, Pennsylvania(PA), 19460', 'UPS', 'Envelope');
-
-
-
