@@ -4,15 +4,11 @@ import joblib
 
 
 
-
-
 app = Flask(__name__)
 #model = pickle.load(open('model.pkl', 'rb'))
 
 
 # this area is the test code
-
-
 
 
 @app.route('/home')
@@ -27,21 +23,14 @@ def home():
 def projectwriteup():
     return render_template("project_writeup.html")
 
-@app.route('/alec')
+@app.route('/jerimiah')
 def alec():
-    return render_template("resume_alec.html")
+    return render_template("resume_jerimiah.html")
 
 @app.route('/roshane')
 def roshane():
     return render_template("resume_shane.html")
 
-@app.route('/isaac')
-def isaac():
-    return render_template("resume_isaac.html")
-
-@app.route('/sean')
-def sean():
-    return render_template("resume_sean.html")
 
 #-------------------------------------------------------------------------------------#
 #--------------------------- ML Model Code -------------------------------------------#
