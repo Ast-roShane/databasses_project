@@ -43,6 +43,7 @@ how many did he recieve each day and at what times did the packages arrive?*/
   SELECT student_id, first_name,last_name
   FROM students NATURAL LEFT OUTER JOIN incoming_shipments
   WHERE student_id IS NULL
+  
 
 
 -----------------query4----------------------
@@ -59,24 +60,23 @@ Add a new employee to the database with the employee values and then output the 
 
   ---------------------query6------------------
   /*The university has the budget to increase the hourly rate for employees at the mail center.
-  Employees getting paid less than $8 would be considered underpaid. So they will recieve a raise a 15% raise and employees who are getting over 8 will recieve a 5% raise.*/
-  ----THIS QUERY HIGHLIGHTS ALL EMPLOYEES GETTING PAID UNDER $8 AS UNDERPAID AND GIVES THE EMPLOYEES A 15% RAISE. ANY EMPLOYEE GETTING PAID MORE THAN 8 WILL RECIEVE A 5% RAISE.
-  SELECT employee_id,first_name,last_name
+  Employees getting paid less than $12 would be considered underpaid. So they will recieve a raise a 15% raise and employees who are getting over 8 will recieve a 5% raise.*/
+  ----THIS QUERY HIGHLIGHTS ALL EMPLOYEES GETTING PAID UNDER $12 AS UNDERPAID AND GIVES THE EMPLOYEES A 15% RAISE. ANY EMPLOYEE GETTING PAID MORE THAN 8 WILL RECIEVE A 5% RAISE.
+  SELECT employees_id,first_name,last_name,
       CASE
-        WHEN hourly_rate<8.00 THEN 'UNDERPAID'
+	 	WHEN hourly_rate<12.00 THEN 'UNDERPAID'
       END AS pay_status
-    FROM employees
-
-
-  UPDATE employees
-  SET hourly_rate =  CASE
-                        WHEN pay_status='UNDERPAID' THEN hourly_rate*1.05
-                        ELSE hourly_rate*1.15
-                      END;
+	  FROM employees
+	--------------------once ran run this----------------
+	UPDATE employees
+  	SET hourly_rate = CASE
+                       		WHEN hourly_rate<10.00 THEN hourly_rate*1.05
+                       		ELSE hourly_rate*1.15
+                     	 END;
 
 
 --------------------query8-------------------
 
   SELECT cust_name,email,cust_contact_numbers
   FROM customers NATURAL LEFT OUTER JOIN faculty NATURAL LEFT OUTER JOIN students
-  WHERE student_id,faculty_id IS NULL;
+  WHERE student_id AND faculty_id IS NULL;
