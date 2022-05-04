@@ -6,6 +6,7 @@ DELETE FROM faculty;
 DELETE FROM customers;
 DELETE FROM departments;
 DELETE FROM outgoing_shipments;
+DELETE FROM delivered_packages; 
 
 -------------------------------------------------------------------------------
 ---------------------------------departments------------------------------------

@@ -194,3 +194,41 @@ CREATE VIEW employeewages AS
 	FROM employees;
 SELECT *
 FROM employeewages;
+
+
+-----------------------------------------------------------------------------------
+-----------------------------------Trigger functions-----------------------------------------
+
+-----THIS TRIGGER FUNCTION CLEARS ALL THE DELIVERED PACKAGES OUT THE ARRIVED PACKAGES TABLE AND MOVES IT TO Delivered_packages
+      CREATE FUNCTION Delivered()
+        RETURNS TRIGGER
+        LANGUAGE PLPGSQL
+        AS
+        $$
+            DECLARE tracking      INTEGER;
+            DECLARE datee         DATE;
+            DECLARE timee         TIME;
+
+            BEGIN
+                SELECT EXTRACT(DATE FROM NOW()) INTO datee;
+                SELECT EXTRACT(TIME FROM NOW()) INTO timee;
+
+
+                INSERT INTO delivered_packages(tracking_number, student_id, faculty_id, employees_id, date_delivered, time_delivered, comment)
+                VALUES (incoming_shipments.tracking_number, incoming_shipments.tudent_id, incoming_shipments.faculty_id, incoming_shipments.employees_id, datee, timee, comment)
+
+
+                DELETE
+                FROM incoming_shipments
+                WHERE tracking_number = NEW.tracking_number
+
+                RETURN NEW;
+            END;
+        $$;
+
+
+        CREATE TRIGGER updatePackStat
+        AFTER UPDATE ON incoming_shipments
+        FOR EACH ROW
+        WHEN(NEW.comment LIKE '%delivered%')
+        EXCECUTE PROCEDURE Delivered();

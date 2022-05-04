@@ -10,6 +10,7 @@ DROP TABLE faculty CASCADE;
 DROP TABLE customers CASCADE;
 DROP TABLE outgoing_shipments CASCADE;
 DROP TABLE incoming_shipments CASCADE;
+DROP TABLE delivered_packages CASCADE;
 
 	CREATE TABLE IF NOT EXISTS students (
 		student_id	INTEGER,
@@ -124,4 +125,24 @@ DROP TABLE incoming_shipments CASCADE;
 		CONSTRAINT incoming_shipments_fkey3 FOREIGN KEY (employees_id) REFERENCES employees (employees_id)
 			ON UPDATE CASCADE
 			ON DELETE CASCADE
+
+
+		);
+
+			CREATE TABLE IF NOT EXISTS delivered_packages (
+				tracking_number INTEGER,
+				student_id INTEGER,
+				faculty_id INTEGER,
+				employees_id INTEGER,
+				date_delivered DATE,
+				time_delivered TIME,
+
+				CONSTRAINT delivered_packages_pkey PRIMARY KEY (tracking_number),
+				CONSTRAINT delivered_packages_fkey1 FOREIGN KEY (student_id) REFERENCES students (student_id),
+				CONSTRAINT delivered_packages_fkey2 FOREIGN KEY (faculty_id) REFERENCES faculty (faculty_id),
+				CONSTRAINT delivered_packages_fkey3 FOREIGN KEY (employees_id) REFERENCES employees (employees_id)
+					ON UPDATE CASCADE
+					ON DELETE CASCADE
+
+
 	);
