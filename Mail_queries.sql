@@ -149,3 +149,82 @@ Add a new employee to the database with the employee values and then output the 
   SELECT first_name,last_name
   FROM employees JOIN  incoming_shipments ON employees.employees_id = incoming_shipments.employees_id
   WHERE date_arrived = '2022-04-23'
+
+
+  -----------------------------------------------------------
+
+  CREATE OR REPLACE scan speed(packages VARCHAR(20))
+  RETURNS INTEGER
+  LANGUAGE plpgsql
+  AS
+  $$
+      -- Variable Declarations
+      DECLARE
+        d_count INTEGER;
+      -- SQL Statements
+      BEGIN
+        <...>
+      END;
+  $$;
+
+
+  CREATE OR REPLACE FUNCTION instructor_of(dept_name VARCHAR(20))
+  RETURNS TABLE (IDD VARCHAR(5),
+                namee VARCHAR(20),
+                dept_namee VARCHAR(20),
+                salaryy NUMERIC(8,2))
+
+  LANGUAGE plpgsql
+  AS
+  $$
+      -- SQL Statements
+      BEGIN
+        RETURN QUERY
+        SELECT ID, name, instructor.dept_name, salaryy
+        FROM instructor
+        WHERE instructor.dept_name=instructor_of.dept_name;
+      END;
+  $$;
+
+
+----A function that calculates how many packages a student recieved in a DAY
+
+CREATE OR REPLACE FUNCTION packages_recieved(s_id INTEGER, datee DATE)
+RETURNS INTEGER
+LANGUAGE plpgsql
+AS
+$$
+    DECLARE num_packages INTEGER;
+
+
+
+      BEGIN
+          SELECT COUNT(*) INTO num_packages
+          FROM incoming_shipments
+          WHERE student_id = s_id AND datee = date_arrived;
+
+          RETURN num_packages;
+      END;
+$$;
+
+SELECT packages_recieved(000128,'2022-04-22')
+    -----------------------
+CREATE OR REPLACE FUNCTION packages_recieved(s_id INTEGER)
+RETURNS INTEGER
+LANGUAGE plpgsql
+AS
+$$
+    DECLARE num_packages INTEGER;
+    DECLARE datee         DATE;
+
+
+      BEGIN
+
+          SELECT EXTRACT(DATE FROM NOW()) INTO datee;
+          SELECT COUNT(*) INTO num_packages
+          FROM incoming_shipments
+          WHERE student_id = s_id AND datee = date_arrived;
+
+          RETURN num_packages;
+      END;
+$$;
