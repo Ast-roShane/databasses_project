@@ -58,7 +58,11 @@ how many did he recieve each day and at what times did the packages arrive?*/
 /* A student whose name is Aroon Shankar at Eastern university was just hired at the mail center.
 Add a new employee to the database with the employee values and then output the employees list in alphabetical order by first name */
 
-  INSERT INTO employees (employees_id, first_name, last_name, email, contact_number, hourly_rate) VALUES (21589, 'Aroon', 'Shankar', 'aroon.shankar@eastern.edu', '582-529-5188', 9.00 )
+  INSERT INTO employees (employees_id, first_name, last_name, email, contact_number, hourly_rate) 
+  VALUES (21589, 'Aroon', 'Shankar', 'aroon.shankar@eastern.edu', '582-529-5188', 9.00 )
+  
+  DELETE FROM employees
+  WHERE employees_id= 21589
 
   --CHECKING TO SEE IF THE STUDENT WAS ADDED ONTO THE EMPLOYEES TABLE AND OUTPUTTING THE LIST IN ALPHABETICAL ORDER--
   SELECT first_name, last_name
@@ -140,25 +144,7 @@ Add a new employee to the database with the employee values and then output the 
   -----------------------------------------------------------
 
 
-  CREATE OR REPLACE FUNCTION instructor_of(dept_name VARCHAR(20))
-  RETURNS TABLE (IDD VARCHAR(5),
-                namee VARCHAR(20),
-                dept_namee VARCHAR(20),
-                salaryy NUMERIC(8,2))
-
-  LANGUAGE plpgsql
-  AS
-  $$
-      -- SQL Statements
-      BEGIN
-        RETURN QUERY
-        SELECT ID, name, instructor.dept_name, salaryy
-        FROM instructor
-        WHERE instructor.dept_name=instructor_of.dept_name;
-      END;
-  $$;
-
-
+  
 ----A function that calculates how many packages a student recieved in a DAY
 
 CREATE OR REPLACE FUNCTION packages_recieved(s_id INTEGER, datee DATE)
@@ -249,15 +235,13 @@ FROM employeewages;
 
             BEGIN
                 SELECT EXTRACT(DATE FROM NOW()) INTO datee;
-                SELECT EXTRACT(TIME FROM NOW()) INTO timee;
+               --SELECT EXTRACT(TIME FROM NOW()) INTO timee;
 
 
-                INSERT INTO delivered_packages(tracking_number, student_id, faculty_id, employees_id, date_delivered, time_delivered)
-                VALUES (incoming_shipments.tracking_number, incoming_shipments.tudent_id, incoming_shipments.faculty_id, incoming_shipments.employees_id, datee, timee)
-
-
-                DELETE
-                FROM incoming_shipments
+                INSERT INTO delivered_packages(tracking_number, student_id, faculty_id, employees_id, date_delivered)
+                VALUES (incoming_shipments.tracking_number, incoming_shipments.tudent_id, incoming_shipments.faculty_id, incoming_shipments.employees_id, datee)
+				
+				DELETE FROM incoming_shipments
                 WHERE tracking_number = NEW.tracking_number
 
                 RETURN NEW;
@@ -269,4 +253,4 @@ FROM employeewages;
         AFTER UPDATE ON incoming_shipments
         FOR EACH ROW
         WHEN(NEW.comment LIKE '%delivered%')
-        EXCECUTE PROCEDURE Delivered();
+        EXECUTE PROCEDURE Delivered();
