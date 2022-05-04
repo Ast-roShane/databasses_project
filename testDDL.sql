@@ -136,6 +136,7 @@ DROP TABLE delivered_packages CASCADE;
 				employees_id INTEGER,
 				date_delivered DATE,
 				time_delivered TIME,
+				
 
 				CONSTRAINT delivered_packages_pkey PRIMARY KEY (tracking_number),
 				CONSTRAINT delivered_packages_fkey1 FOREIGN KEY (student_id) REFERENCES students (student_id),

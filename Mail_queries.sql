@@ -58,9 +58,9 @@ how many did he recieve each day and at what times did the packages arrive?*/
 /* A student whose name is Aroon Shankar at Eastern university was just hired at the mail center.
 Add a new employee to the database with the employee values and then output the employees list in alphabetical order by first name */
 
-  INSERT INTO employees (employees_id, first_name, last_name, email, contact_number, hourly_rate) 
+  INSERT INTO employees (employees_id, first_name, last_name, email, contact_number, hourly_rate)
   VALUES (21589, 'Aroon', 'Shankar', 'aroon.shankar@eastern.edu', '582-529-5188', 9.00 )
-  
+
   DELETE FROM employees
   WHERE employees_id= 21589
 
@@ -144,7 +144,7 @@ Add a new employee to the database with the employee values and then output the 
   -----------------------------------------------------------
 
 
-  
+
 ----A function that calculates how many packages a student recieved in a DAY
 
 CREATE OR REPLACE FUNCTION packages_recieved(s_id INTEGER, datee DATE)
@@ -224,7 +224,7 @@ FROM employeewages;
 -----------------------------------Trigger functions-----------------------------------------
 
 -----THIS TRIGGER FUNCTION CLEARS ALL THE DELIVERED PACKAGES OUT THE ARRIVED PACKAGES TABLE AND MOVES IT TO Delivered_packages
-      CREATE FUNCTION Delivered()
+      CREATE OR REPLACE FUNCTION Delivered()
         RETURNS TRIGGER
         LANGUAGE PLPGSQL
         AS
@@ -234,23 +234,41 @@ FROM employeewages;
             DECLARE timee         TIME;
 
             BEGIN
-                SELECT EXTRACT(DATE FROM NOW()) INTO datee;
-               --SELECT EXTRACT(TIME FROM NOW()) INTO timee;
+               SELECT CURRENT_DATE INTO datee;
+               SELECT CURRENT_TIME INTO timee;
 
 
-                INSERT INTO delivered_packages(tracking_number, student_id, faculty_id, employees_id, date_delivered)
-                VALUES (incoming_shipments.tracking_number, incoming_shipments.tudent_id, incoming_shipments.faculty_id, incoming_shipments.employees_id, datee)
+                INSERT INTO delivered_packages(tracking_number, student_id, faculty_id, employees_id, date_delivered,time_delivered)
+                SELECT tracking_number, student_id, faculty_id, employees_id, datee, timee
+				FROM incoming_shipments
+				WHERE tracking_number = NEW.tracking_number;
+				
 				
 				DELETE FROM incoming_shipments
-                WHERE tracking_number = NEW.tracking_number
+                WHERE tracking_number = NEW.tracking_number;
 
                 RETURN NEW;
             END;
         $$;
 
-
         CREATE TRIGGER updatePackStat
         AFTER UPDATE ON incoming_shipments
         FOR EACH ROW
-        WHEN(NEW.comment LIKE '%delivered%')
+        WHEN(NEW.commentt LIKE '%delivered%')
         EXECUTE PROCEDURE Delivered();
+		
+		-----------TEST QUERY---------------------
+		UPDATE incoming_shipments
+		SET commentt = 'delivered'
+		WHERE tracking_number = 272116;
+		
+		SELECT *
+		FROM delivered_packages
+		
+		SELECT *
+		FROM incoming_shipments
+	
+		DELETE FROM delivered_packages
+		--WHERE tracking_number = 272116;
+		
+		

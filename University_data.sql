@@ -143,9 +143,9 @@ INSERT INTO driving_details (van_id, employees_id, driver_license_number, time_l
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------incoming_shipments------------------------------------------------
 
-INSERT INTO incoming_shipments (tracking_number, student_id, faculty_id, employees_id, date_arrived, time_arrived, commentt) VALUES (272116, 000128, NULL, 12345,'2022-04-22', '13:23:44','SHELF');
-INSERT INTO incoming_shipments (tracking_number, student_id, faculty_id, employees_id, date_arrived, time_arrived, commentt) VALUES (272117,000128, NULL, 12345,'2022-04-22', '13:23:44','SHELF');
-INSERT INTO incoming_shipments (tracking_number, student_id, faculty_id, employees_id, date_arrived, time_arrived, commentt) VALUES (272118, 000128, NULL, 12345,'2022-04-22', '13:23:44','SHELF');
+INSERT INTO incoming_shipments (tracking_number, student_id, faculty_id, employees_id, date_arrived, time_arrived, commentt) VALUES (272116, 00128, NULL, 12345,'2022-04-22', '13:23:44','SHELF');
+INSERT INTO incoming_shipments (tracking_number, student_id, faculty_id, employees_id, date_arrived, time_arrived, commentt) VALUES (272117,00128, NULL, 12345,'2022-04-22', '13:23:44','SHELF');
+INSERT INTO incoming_shipments (tracking_number, student_id, faculty_id, employees_id, date_arrived, time_arrived, commentt) VALUES (272118, 00128, NULL, 12345,'2022-04-22', '13:23:44','SHELF');
 INSERT INTO incoming_shipments (tracking_number, student_id, faculty_id, employees_id, date_arrived, time_arrived, commentt) VALUES (272177, NULL, 10101, 12345,'2022-04-22', '13:25:00','SHELF');
 INSERT INTO incoming_shipments (tracking_number, student_id, faculty_id, employees_id, date_arrived, time_arrived, commentt) VALUES (272056, NULL, 10101, 12345,'2022-04-22', '13:25:00','SHELF');
 
