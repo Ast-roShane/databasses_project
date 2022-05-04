@@ -65,8 +65,46 @@ Add a new employee to the database with the employee values and then output the 
   FROM employees
   ORDER BY first_name ASC;
 
+  --------------------------------------------------
+  --------------------query5------------------------
+  /* A NEW student Jeremiah Pha has decided to transfer here at Eastern.
+  Add Jeremiah’s information into the mail center's student list with his student information using a stored procedure. */
 
-  ---------------------query6------------------
+  -- DROPS PROCEDURE IF NEEDED--
+  DROP PROCEDURE addStudent CASCADE;
+
+  --CREATES MY STORED PROCEDURE--
+  CREATE OR REPLACE PROCEDURE addStudent
+  	(
+  	s_student_id	INTEGER,
+  	s_first_name	VARCHAR(20),
+  	s_last_name		VARCHAR(20),
+  	s_email 			VARCHAR(50),
+  	s_contact_number VARCHAR(25)
+  	)
+  LANGUAGE PLPGSQL AS
+  $$
+  BEGIN
+  	INSERT INTO students (student_id, first_name, last_name, email, contact_number) VALUES
+  	(
+  	s_student_id,
+  	s_first_name,
+  	s_last_name,
+  	s_email,
+  	s_contact_number
+  	) RETURNING student_id INTO s_student_id;
+  END
+  $$;
+
+  --CALLING FUNCTION TO ADD NEW STUDENT JEREMIAH WITH DATA INTO STUDENTS TABLE--
+  CALL addStudent('32141','Jeremiah', 'Pha', 'jeremiah.pha@eastern.edu', '717-371-7119');
+
+  --OUTPUTTING THE TABLE TO CHECK IF JEREMIAH PHA WAS ADDED TO THE MAIL CENTER STUDENTS TABLE--
+  SELECT *
+  FROM students;
+
+  --------------------------------------------------
+  ---------------------query6-----------------------
   /*The university has the budget to increase the hourly rate for employees at the mail center.
   Employees getting paid less than $12 would be considered underpaid. So they will recieve a raise a 15% raise and employees who are getting over 8 will recieve a 5% raise.*/
 
