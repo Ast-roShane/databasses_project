@@ -230,3 +230,34 @@ $$
           RETURN num_packages;
       END;
 $$;
+
+
+--------------------------------------------------
+--------------------query10------------------------
+/* The president of Eastern University wants to see a list of all of the faculty names. Create a view to do so.*/
+--Drops view if needed--
+DROP VIEW allFaculty CASCADE;
+
+--CREATES VIEW--
+CREATE VIEW allFaculty AS
+  SELECT first_name, last_name
+  FROM faculty;
+SELECT *
+FROM allFaculty;
+
+
+
+--------------------------------------------------
+--------------------query11------------------------
+/*The manager of the Mail center wants to know all the wages of the employees for the purpose of seeing if a raise should be given to the employees.
+ Create a view to do so. */
+
+--DROPS VIEW IF NEEDED--
+DROP VIEW employeewages CASCADE;
+
+--CREATES VIEW--
+CREATE VIEW employeewages AS
+	SELECT first_name, last_name, hourly_rate
+	FROM employees;
+SELECT *
+FROM employeewages;
