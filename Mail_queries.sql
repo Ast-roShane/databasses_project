@@ -161,13 +161,13 @@ $$
 
           RETURN num_packages;
       END;
-<<<<<<< HEAD
 $$;
 
 
 --------------------------------------------------
 --------------------query10------------------------
 /* The president of Eastern University wants to see a list of all of the faculty names. Create a view to do so.*/
+
 --Drops view if needed--
 DROP VIEW allFaculty CASCADE;
 
@@ -194,5 +194,3 @@ CREATE VIEW employeewages AS
 	FROM employees;
 SELECT *
 FROM employeewages;
-=======
->>>>>>> f90526d9a731d7858eba4e4924da38b8cd62f0be
