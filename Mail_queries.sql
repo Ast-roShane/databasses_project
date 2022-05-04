@@ -214,8 +214,8 @@ FROM employeewages;
                 SELECT EXTRACT(TIME FROM NOW()) INTO timee;
 
 
-                INSERT INTO delivered_packages(tracking_number, student_id, faculty_id, employees_id, date_delivered, time_delivered, comment)
-                VALUES (incoming_shipments.tracking_number, incoming_shipments.tudent_id, incoming_shipments.faculty_id, incoming_shipments.employees_id, datee, timee, comment)
+                INSERT INTO delivered_packages(tracking_number, student_id, faculty_id, employees_id, date_delivered, time_delivered)
+                VALUES (incoming_shipments.tracking_number, incoming_shipments.tudent_id, incoming_shipments.faculty_id, incoming_shipments.employees_id, datee, timee)
 
 
                 DELETE
