@@ -1,5 +1,3 @@
-
-
 -----------------query1----------------------
 /* List all faculty members with their faculty id and which building they teach in.
 Then list all faculty and student members at Eastern university who have the same first name as each other. */
@@ -15,21 +13,23 @@ Then list all faculty and student members at Eastern university who have the sam
   INNER JOIN students ON faculty.first_name = students.first_name;
 
 
+
 -----------------query2----------------------
 
 /* How many packages were routed to the student with the name of Michael Zhang? IF Michael had received any packages,
 how many did he recieve each day and at what times did the packages arrive?*/
 
-	--THIS QUERY COUNTS HOW MANY INCOMING PACKAGES MICHAEL HAS RECEIVED
-	SELECT COUNT(incoming_shipments.student_id)
-	FROM incoming_shipments
-	WHERE incoming_shipments.student_id = '000128';
+    --THIS QUERY COUNTS HOW MANY INCOMING PACKAGES MICHAEL HAS RECEIVED
+    SELECT COUNT(incoming_shipments.student_id)
+    FROM incoming_shipments
+    WHERE incoming_shipments.student_id = '000128';
 
   --THIS QUERY CHECKS HOW MANY PACKAGES MICHAEL HAD RECEIVED ON EACH DAY AND WHAT TIMES THE PACKAGES HAVE ARRIVED--
-	SELECT students.first_name, date_arrived, time_arrived, COUNT(incoming_shipments.student_id)
-	FROM incoming_shipments,students
-	WHERE incoming_shipments.student_id = '000128' AND students.student_id = '000128'
-	GROUP BY students.first_name, incoming_shipments.date_arrived, incoming_shipments.time_arrived;
+    SELECT students.first_name, date_arrived, time_arrived, COUNT(incoming_shipments.student_id)
+    FROM incoming_shipments,students
+    WHERE incoming_shipments.student_id = '000128' AND students.student_id = '000128'
+    GROUP BY students.first_name, incoming_shipments.date_arrived, incoming_shipments.time_arrived;
+
 
 
 
@@ -48,6 +48,8 @@ Add a new employee to the database with the employee values and then output the 
   FROM employees
   ORDER BY first_name ASC;
 
+
+
   --------------------------------------------------
   --------------------query4------------------------
   /* A NEW student Jeremiah Pha has decided to transfer here at Eastern.
@@ -58,24 +60,24 @@ Add a new employee to the database with the employee values and then output the 
 
   --CREATES MY STORED PROCEDURE--
   CREATE OR REPLACE PROCEDURE addStudent
-  	(
-  	s_student_id	INTEGER,
-  	s_first_name	VARCHAR(20),
-  	s_last_name		VARCHAR(20),
-  	s_email 			VARCHAR(50),
-  	s_contact_number VARCHAR(25)
-  	)
+      (
+      s_student_id    INTEGER,
+      s_first_name    VARCHAR(20),
+      s_last_name        VARCHAR(20),
+      s_email             VARCHAR(50),
+      s_contact_number VARCHAR(25)
+      )
   LANGUAGE PLPGSQL AS
   $$
   BEGIN
-  	INSERT INTO students (student_id, first_name, last_name, email, contact_number) VALUES
-  	(
-  	s_student_id,
-  	s_first_name,
-  	s_last_name,
-  	s_email,
-  	s_contact_number
-  	) RETURNING student_id INTO s_student_id;
+      INSERT INTO students (student_id, first_name, last_name, email, contact_number) VALUES
+      (
+      s_student_id,
+      s_first_name,
+      s_last_name,
+      s_email,
+      s_contact_number
+      ) RETURNING student_id INTO s_student_id;
   END
   $$;
 
@@ -86,45 +88,82 @@ Add a new employee to the database with the employee values and then output the 
   SELECT *
   FROM students;
 
+
+----------------------------------------------------
+--------------------query5------------------------
+/* The president of Eastern University wants to see a list of all of the faculty names. Create a view to do so.*/
+
+--Drops view if needed--
+DROP VIEW allFaculty CASCADE;
+
+--CREATES VIEW--
+CREATE VIEW allFaculty AS
+  SELECT first_name, last_name
+  FROM faculty;
+SELECT *
+FROM allFaculty;
+
+
+
+
+--------------------------------------------------
+--------------------query6------------------------
+/*The manager of the Mail center wants to know all the wages of the employees for the purpose of seeing if a raise should be given to the employees.
+ Create a view to do so. */
+
+--DROPS VIEW IF NEEDED--
+DROP VIEW employeewages CASCADE;
+
+--CREATES VIEW--
+CREATE VIEW employeewages AS
+    SELECT first_name, last_name, hourly_rate
+    FROM employees;
+SELECT *
+FROM employeewages;
+
+
   --------------------------------------------------
-  ---------------------query5-----------------------
+  ---------------------query7-----------------------
   /*The university has the budget to increase the hourly rate for employees at the mail center.
-  Employees getting paid less than $12 would be considered underpaid. So they will recieve a raise a 15% raise and employees who are getting over 8 will recieve a 5% raise.*/
+  Employees getting paid less than $12 would be considered underpaid. So they will recieve a raise a 15% raise and employees who are getting over $8 will receive a 5% raise.*/
 
   ----THIS QUERY HIGHLIGHTS ALL EMPLOYEES GETTING PAID UNDER $12 AS UNDERPAID AND GIVES THE EMPLOYEES A 15% RAISE. ANY EMPLOYEE GETTING PAID MORE THAN 8 WILL RECIEVE A 5% RAISE.
   SELECT employees_id,first_name,last_name,
       CASE
-	 	WHEN hourly_rate< 12.00 THEN 'UNDERPAID'
+         WHEN hourly_rate< 12.00 THEN 'UNDERPAID'
       END AS pay_status
-	  FROM employees;
-	--------------------once ran run this----------------
+      FROM employees;
+    --------------------once ran run this----------------
 
-	UPDATE employees
-  	SET hourly_rate = CASE
-                       		WHEN hourly_rate<10.00 THEN hourly_rate*1.05
-                       		ELSE hourly_rate*1.15
-                     	 END;
+    UPDATE employees
+      SET hourly_rate = CASE
+                               WHEN hourly_rate<10.00 THEN hourly_rate*1.05
+                               ELSE hourly_rate*1.15
+                          END;
 
 
---------------------query6-------------------
+
+  ---------------------------------------------
+  --------------------query8-------------------
+  /*The university's marketing team is interested in sending promotional information to all
+customers at the mail center who are not students or faculty. */
 
   SELECT cust_name,email,cust_contact_numbers
   FROM customers NATURAL LEFT OUTER JOIN students
-  WHERE faculty_id IS NULL AND student_id IS NULL
+  WHERE faculty_id IS NULL AND student_id IS NULL;
+
 
   -------------------------------------------------
-  --------------------------query7------------------------------------
-  -------NAME ALL THE EMPLOYEES THAT ROUTED PACKAGES ON APRIL 23 2022-----
+  --------------------------query9--------------
+  /*There is a package that UPS said they delivered. The package was never scanned into the system and the
+   Mail Center manager wanted a record of all employees responsible for routing packages on Apr 23, 2022.*/
   SELECT first_name,last_name
   FROM employees JOIN  incoming_shipments ON employees.employees_id = incoming_shipments.employees_id
   WHERE date_arrived = '2022-04-23'
 
-
-  -----------------------------------------------------------
-
-
-
-----A function that calculates how many packages a student recieved in a DAY
+  --------------------------------------------------
+  --------------------query10------------------------
+---- Write A function that calculates how many packages a student received in a DAY--
 
 CREATE OR REPLACE FUNCTION packages_recieved(s_id INTEGER, datee DATE)
 RETURNS INTEGER
@@ -144,66 +183,16 @@ $$
       END;
 $$;
 
+--outputting the packages received--
 SELECT packages_recieved(000128,'2022-04-22')
-    -----------------------
-CREATE OR REPLACE FUNCTION packages_recieved(s_id INTEGER)
-RETURNS INTEGER
-LANGUAGE plpgsql
-AS
-$$
-    DECLARE num_packages INTEGER;
-    DECLARE datee         DATE;
 
 
-      BEGIN
+-----------------------------query11--------------------------------------
+-----------------------------Trigger function----------------------------
+/*This is a function that moves the packages that were delivered  to the student or faculty member
+ from the incoming_shipments table to the delivered_packages table once they are marked delivered.*/
 
-          SELECT EXTRACT(DATE FROM NOW()) INTO datee;
-          SELECT COUNT(*) INTO num_packages
-          FROM incoming_shipments
-          WHERE student_id = s_id AND datee = date_arrived;
-
-          RETURN num_packages;
-      END;
-$$;
-
-
---------------------------------------------------
---------------------query8------------------------
-/* The president of Eastern University wants to see a list of all of the faculty names. Create a view to do so.*/
-
---Drops view if needed--
-DROP VIEW allFaculty CASCADE;
-
---CREATES VIEW--
-CREATE VIEW allFaculty AS
-  SELECT first_name, last_name
-  FROM faculty;
-SELECT *
-FROM allFaculty;
-
-
-
---------------------------------------------------
---------------------query9------------------------
-/*The manager of the Mail center wants to know all the wages of the employees for the purpose of seeing if a raise should be given to the employees.
- Create a view to do so. */
-
---DROPS VIEW IF NEEDED--
-DROP VIEW employeewages CASCADE;
-
---CREATES VIEW--
-CREATE VIEW employeewages AS
-	SELECT first_name, last_name, hourly_rate
-	FROM employees;
-SELECT *
-FROM employeewages;
-
-
------------------------------------------------------------------------------------
------------------------------------Trigger functions-----------------------------------------
-
------THIS TRIGGER FUNCTION CLEARS ALL THE DELIVERED PACKAGES OUT THE ARRIVED PACKAGES TABLE AND MOVES IT TO Delivered_packages
-      CREATE OR REPLACE FUNCTION Delivered()
+        CREATE OR REPLACE FUNCTION Delivered()
         RETURNS TRIGGER
         LANGUAGE PLPGSQL
         AS
@@ -219,11 +208,11 @@ FROM employeewages;
 
                 INSERT INTO delivered_packages(tracking_number, student_id, faculty_id, employees_id, date_delivered,time_delivered)
                 SELECT tracking_number, student_id, faculty_id, employees_id, datee, timee
-				FROM incoming_shipments
-				WHERE tracking_number = NEW.tracking_number;
+                FROM incoming_shipments
+                WHERE tracking_number = NEW.tracking_number;
 
 
-				DELETE FROM incoming_shipments
+                DELETE FROM incoming_shipments
                 WHERE tracking_number = NEW.tracking_number;
 
                 RETURN NEW;
@@ -236,16 +225,16 @@ FROM employeewages;
         WHEN(NEW.commentt LIKE '%delivered%')
         EXECUTE PROCEDURE Delivered();
 
-		-----------TEST QUERY---------------------
-		UPDATE incoming_shipments
-		SET commentt = 'delivered'
-		WHERE tracking_number = 272116;
+        -----------TEST QUERY---------------------
+        UPDATE incoming_shipments
+        SET commentt = 'delivered'
+        WHERE tracking_number = 272116;
 
-		SELECT *
-		FROM delivered_packages
+        SELECT *
+        FROM delivered_packages
 
-		SELECT *
-		FROM incoming_shipments
+        SELECT *
+        FROM incoming_shipments
 
-		DELETE FROM delivered_packages
-		--WHERE tracking_number = 272116;
+        DELETE FROM delivered_packages
+        --WHERE tracking_number = 272116;
