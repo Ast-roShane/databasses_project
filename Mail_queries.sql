@@ -138,6 +138,7 @@ Add a new employee to the database with the employee values and then output the 
   FROM customers NATURAL LEFT OUTER JOIN students
   WHERE faculty_id IS NULL AND student_id IS NULL
 
+<<<<<<< HEAD
 
 
 
@@ -145,6 +146,10 @@ Add a new employee to the database with the employee values and then output the 
 
   --------------------------------------------------
   --------------------query9------------------------
+=======
+  -------------------------------------------------
+  --------------------------query9------------------------------------
+>>>>>>> 49057acd9500336df43d6629479bf75082ffbcd4
   -------NAME ALL THE EMPLOYEES THAT ROUTED PACKAGES ON APRIL 23 2022-----
   SELECT first_name,last_name
   FROM employees JOIN  incoming_shipments ON employees.employees_id = incoming_shipments.employees_id
