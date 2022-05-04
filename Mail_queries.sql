@@ -1,5 +1,3 @@
---------New queries--------------
-
 
 
 -----------------query1----------------------
@@ -35,26 +33,7 @@ how many did he recieve each day and at what times did the packages arrive?*/
 
 
 
-
-
 -----------------query3----------------------
-/*
- Find the ID and name of each student who has never received a package at the university.
-
-----THIS QUERY LISTS THE NAMES OF STUDENTS WHO HAS NOT RECIEVED OR SHIPPED A PACKAGE AT THE UNIVERSITY
-  SELECT *
-  FROM ((SELECT*
-		FROM incoming_shipments
-		WHERE incoming_shipments.student_id IS NULL)AS foo
-		NATURAL FULL OUTER JOIN
-		(SELECT *
-		FROM customers
-		WHERE customers.student_id IS NULL)AS bar);
---  WHERE student_id IS NULL
-
-*/
-
------------------query4----------------------
 /* A student whose name is Aroon Shankar at Eastern university was just hired at the mail center.
 Add a new employee to the database with the employee values and then output the employees list in alphabetical order by first name */
 
@@ -70,7 +49,7 @@ Add a new employee to the database with the employee values and then output the 
   ORDER BY first_name ASC;
 
   --------------------------------------------------
-  --------------------query5------------------------
+  --------------------query4------------------------
   /* A NEW student Jeremiah Pha has decided to transfer here at Eastern.
   Add Jeremiah’s information into the mail center's student list with his student information using a stored procedure. */
 
@@ -108,7 +87,7 @@ Add a new employee to the database with the employee values and then output the 
   FROM students;
 
   --------------------------------------------------
-  ---------------------query6-----------------------
+  ---------------------query5-----------------------
   /*The university has the budget to increase the hourly rate for employees at the mail center.
   Employees getting paid less than $12 would be considered underpaid. So they will recieve a raise a 15% raise and employees who are getting over 8 will recieve a 5% raise.*/
 
@@ -127,14 +106,14 @@ Add a new employee to the database with the employee values and then output the 
                      	 END;
 
 
---------------------query8-------------------
+--------------------query6-------------------
 
   SELECT cust_name,email,cust_contact_numbers
   FROM customers NATURAL LEFT OUTER JOIN students
   WHERE faculty_id IS NULL AND student_id IS NULL
 
   -------------------------------------------------
-  --------------------------query9------------------------------------
+  --------------------------query7------------------------------------
   -------NAME ALL THE EMPLOYEES THAT ROUTED PACKAGES ON APRIL 23 2022-----
   SELECT first_name,last_name
   FROM employees JOIN  incoming_shipments ON employees.employees_id = incoming_shipments.employees_id
@@ -189,7 +168,7 @@ $$;
 
 
 --------------------------------------------------
---------------------query10------------------------
+--------------------query8------------------------
 /* The president of Eastern University wants to see a list of all of the faculty names. Create a view to do so.*/
 
 --Drops view if needed--
@@ -205,7 +184,7 @@ FROM allFaculty;
 
 
 --------------------------------------------------
---------------------query11------------------------
+--------------------query9------------------------
 /*The manager of the Mail center wants to know all the wages of the employees for the purpose of seeing if a raise should be given to the employees.
  Create a view to do so. */
 
@@ -242,8 +221,8 @@ FROM employeewages;
                 SELECT tracking_number, student_id, faculty_id, employees_id, datee, timee
 				FROM incoming_shipments
 				WHERE tracking_number = NEW.tracking_number;
-				
-				
+
+
 				DELETE FROM incoming_shipments
                 WHERE tracking_number = NEW.tracking_number;
 
@@ -256,19 +235,17 @@ FROM employeewages;
         FOR EACH ROW
         WHEN(NEW.commentt LIKE '%delivered%')
         EXECUTE PROCEDURE Delivered();
-		
+
 		-----------TEST QUERY---------------------
 		UPDATE incoming_shipments
 		SET commentt = 'delivered'
 		WHERE tracking_number = 272116;
-		
+
 		SELECT *
 		FROM delivered_packages
-		
+
 		SELECT *
 		FROM incoming_shipments
-	
+
 		DELETE FROM delivered_packages
 		--WHERE tracking_number = 272116;
-		
-		
