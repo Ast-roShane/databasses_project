@@ -6,10 +6,12 @@
 /* List all faculty members with their faculty id and which building they teach in.
 Then list all faculty and student members at Eastern university who have the same first name as each other. */
 
+  -- Lists all faculty members with their faculty id and which building they teach in.
   SELECT DISTINCT faculty.first_name, faculty_id, building
   FROM faculty, departments
   WHERE faculty.department_id = departments.department_id;
 
+  --list all faculty and student members at Eastern university who have the same first name as each other.--
   SELECT ALL faculty.first_name, faculty.last_name, faculty_id, students.first_name, students.last_name, student_id
   FROM faculty
   INNER JOIN students ON faculty.first_name = students.first_name;
