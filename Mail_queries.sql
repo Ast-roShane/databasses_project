@@ -185,7 +185,7 @@ $$;
 
 --outputting the packages received--
 SELECT packages_recieved(000128,'2022-04-22')
-
+------------------------------Query 11------------------------------------------------
 ---Write a function that calculates how many packages an employee sent out this year--
 
 CREATE OR REPLACE FUNCTION packages_sent(e_id INTEGER)
@@ -194,8 +194,8 @@ LANGUAGE plpgsql
 AS
 $$
     DECLARE num_packages INTEGER;
-	
-    
+
+
       BEGIN
           SELECT COUNT(*) INTO num_packages
           FROM outgoing_shipments
@@ -206,7 +206,7 @@ $$
 $$;
 
 SELECT packages_sent(023121)
------------------------------query11--------------------------------------
+-----------------------------query12--------------------------------------
 -----------------------------Trigger function----------------------------
 /*This is a function that moves the packages that were delivered  to the student or faculty member
  from the incoming_shipments table to the delivered_packages table once they are marked delivered.*/
